@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 1 
+  <script>
+        function retorna100apos3s() {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => { resolve(100); }, 3000);
+            });;
+        }
+        retorna100apos3s().then((valor) => console.log(valor));
+    </script> -->
+
+    <!-- 2 -->
+    <script>
+        function aleatorio(min, max) {
+            return Math.random() * (max - min) + min;
+        }
+
+        function criarCarro(nome) { // 2000 - 5000
+            return new Promise((resolve, reject) => {
+                const tempo = aleatorio(2000, 5000);
+                setTimeout(() => resolve(nome), tempo);
+            });
+        }
+
+        const vencedor = Promise.race([criarCarro('c1'), criarCarro('c2'), criarCarro('c3'), criarCarro('c4'), criarCarro('c5')]);
+        vencedor.then(valor => console.log('Vencedor: ', valor));
+
+    </script>
+
+</body>
+
+</html>

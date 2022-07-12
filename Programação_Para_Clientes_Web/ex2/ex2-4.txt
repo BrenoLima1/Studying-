@@ -1,0 +1,31 @@
+
+Exercício 2
+
+Crie um formulário para cadastro de um
+produto, contendo descrição, estoque e
+preço. Crie uma classe Produto e faça
+com que o formulário instancie um produto
+com os dados informados e o passe para
+uma função salvarProduto, que deve
+enviar os dados para o servidor.
+
+Observação: Deixe salvarProduto sem
+implementação (por hora só imprima o objeto).
+
+
+Exercício 3
+
+Encapsule a classe criada dentro de um único
+objeto global, "app", e modifique o exercício
+anterior para utilizá-la.
+
+Exercício 4
+
+Crie um método toString() na classe Produto,
+que retorne os atributos da classe separados
+por espaço. Modifique o HTML da página para que
+possua uma div em que os dados do produto
+devem ser exibidos. Implemente essa exibição no
+no método salvarProduto, criado anteriormente,
+obtendo os dados do produto pelo método anterior.
+

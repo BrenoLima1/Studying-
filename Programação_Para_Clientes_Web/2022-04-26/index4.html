@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <label for="valor" accesskey="V" >Valor:</label>
+    <input id="valor" type="text" />
+    <button id="acrescentar" >Acrescentar</button>
+    <div id="resultado" ></div>
+    <script>
+        var valores = [];
+        function acrescentar() {
+            var input = document.getElementById( 'valor' );
+            var valor = input.value;
+            valores.push( valor );
+            var conteudo = valores.join( '<br />' );
+            document.getElementById( 'resultado' ).innerHTML = conteudo;
+
+            input.value = '';
+            input.focus();
+        }
+
+        var botao = document.getElementById( 'acrescentar' );
+        botao.onclick = acrescentar;
+
+    </script>
+</body>
+</html>

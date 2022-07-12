@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form >
+        <label for="descricao">Descrição</label>
+        <input type="text" id="descricao">
+        <label for="estoque">Estoque:</label>
+        <input type="text" id="estoque">
+        <button id="acrescentar" >Acrescentar</button>
+    </form>
+    <ul></ul>
+    <script src="mp.js" ></script>
+    <script>
+        const ul = document.querySelector( 'ul' );
+        document.querySelector( 'button' ).onclick = function( ev ) {
+            ev.preventDefault();
+            let mp;
+            try {
+                mp = new MateriaPrima(
+                    document.getElementById( 'descricao' ).value,
+                    document.getElementById( 'estoque' ).value,
+                );
+            } catch ( err ) {
+                alert( 'Erro: ' + err.message );
+                return;
+            }
+            const li = '<li>' + mp.descricao + ' ' + mp.estoque + '</li>';
+            ul.innerHTML += li;
+        };
+    </script>
+</body>
+</html>

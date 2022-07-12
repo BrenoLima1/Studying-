@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="tarefaError.js"></script>
+    <script src="tarefa.js"></script>
+    <form>
+        <label for="">Descrição</label>
+        <input type="text" name="descricao" id="descricao" placeholder="Descrição(entre 3 e 50 caracteres)"><br><br>
+        <label for="">Duração em horas</label>
+        <input type="number" name="duracaoEmHoras" id="duracaoEmHoras" placeholder="Duração em horas"> <br><br>
+        <input type="button" value="Adicionar" id="adicionar" name="adicionar">
+    </form>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Descrição</th>
+                <th>Duração</th>
+                <th>Ação</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script>
+        const tarefas = [];
+        const adicionar = function () {
+            try {
+                
+                const tarefa = new Tarefa(document.getElementById('descricao').value, document.getElementById('duracaoEmHoras').value);
+                tarefas.push(tarefa);
+                document.querySelector('tbody').innerHTML += 
+                `
+                    <tr>
+                        <th>
+                            ${tarefa.descricao}
+                        </th>
+                        <th>
+                            ${tarefa.duracaoEmHoras}
+                        </th>
+                        <th>
+                            <button id = 'remover'>Remover</button>
+                        </th>
+                    </tr>
+                `;
+            } catch (error) {
+                
+            }
+
+        }
+
+        const remover = function (){
+
+            for (const t in tarefas) {
+                tarefas.splice(t);
+            }
+        }
+        document.getElementById('adicionar').addEventListener('click', adicionar);
+    </script>
+</body>
+
+</html>

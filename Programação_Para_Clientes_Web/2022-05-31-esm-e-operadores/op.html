@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // Exercício 1
+        function concatenar1( arr1, arr2 ) {
+            return [ ...arr1, ...arr2 ];
+        }
+        console.log( concatenar1( [ 1, 2, 3 ],  [ 4, 5, 6 ] ) );
+
+        // Exercício 2
+        function concatenar2( ...args ) {
+            let novo = [];
+            for ( const a of args ) {
+                novo.push( ...a );
+            }
+            return novo;
+        }
+        console.log( concatenar2( [ 1, 2, 3 ],  [ 4, 5, 6 ] ) );
+        console.log( concatenar2( [ 1, 2, 3 ],  [ 4, 5, 6 ], [ 7, 8 ] ) );
+
+        // Exercício 3
+        function imprimir( [ n1, , n3 ] ) {
+            console.log( n1, n3 );
+        }
+        imprimir( [ 10, 20, 30, 40, 50 ] );
+
+        // Exercício 4
+        function imprimirAposDois( [ , , ...outros ] ) {
+            console.log( outros );
+        }
+        imprimirAposDois( [ 1, 2, 3, 4, 5, 6 ] );
+
+        // Exercício 5
+        function imprimirEmail( { email } ) {
+            console.log( email );
+        }
+        imprimirEmail( { nome: 'Ana', email: 'ana@site.com' } );
+
+        // Exercício 6
+        function clonar( obj ) {
+            return { ...obj };
+        }
+        console.log( clonar( { nome: 'Ana', email: 'ana@site.com' } ) );
+
+        // Exercício 7
+        function clonar2( obj, obj2 ) {
+            return { ...obj, ...obj2  };
+        }
+        console.log( clonar2(
+            { nome: 'Ana', email: 'ana@site.com' },
+            { idade: 20, email: 'a@b.com' },
+        ) );
+
+        // Exercício 8
+        function clonarSemElemento( arr, el ) {
+             // Extrai o primeiro e o resto
+            const [ primeiro, ...resto ] = arr;
+            // Se o elemento a remover for o primeiro...
+            if ( el === primeiro ) {
+                return resto; // ...retorna o restante do array
+            }
+            // Adiciona o primeiro elemento (que sabemos não ser o que desejamos remover)
+            // e avalia o restante com a função.
+            return [ primeiro, ...remover( resto, el ) ];
+        }
+        const a = [ 1, 2, 3, 4, 5 ];
+        console.log( clonarSemElemento( a, 3 ) );
+
+
+    </script>
+</body>
+</html>

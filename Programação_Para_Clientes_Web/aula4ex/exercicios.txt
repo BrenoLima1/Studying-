@@ -1,0 +1,22 @@
+EXERCÍCIOS EXTRAS - 10/05/2022
+
+1) Crie um formulário para cadastro de Matéria-Prima.
+Uma Matéria-Prima deve conter descrição e estoque.
+A descrição deve ter de 2 a 100 caracteres.
+O estoque deve ser um número igual ou superior a zero.
+Lançar uma exceção do tipo Error para representar um erro.
+Crie uma classe com propriedades que validem os
+dados, segundo as regras acima. Faça com que o
+formulário instancie uma Matéria-Prima,
+adicione em um array e preencha uma
+lista não ordenada de elementos (ul com vários li)
+com seus itens.
+
+2) a) O IMC de uma pessoa adulta pode ser calculada dividindo
+   o peso em kg pela a altura em metros ao quadrado.
+   Crie uma classe IMC com um método estático calcular()
+   que retorne o valor de IMC.
+
+   b) Crie um formulário com os campos Altura e Peso e um botão
+      de Calcular que acione o método da classe e mostre o
+      valor do IMC.

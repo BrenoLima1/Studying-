@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .selecionado {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <form >
+        <label for="codigo">Código</label>
+        <input type="text" id="codigo">
+        <label for="nome">Nome</label>
+        <input type="text" id="nome">
+        <button id="adicionar">Adicionar</button>
+        <button id="atualizar">Atualizar</button>
+        <button id="remover">Remover</button>
+    </form>
+    <table>
+        <thead>
+            <tr> <th>Código</th> <th>Nome</th>  </tr>
+        </thead>
+        <tbody>
+            <tr> <td>123</td> <td>Ana</td> </tr>
+            <tr> <td>124</td> <td>Bia</td> </tr>
+            <tr> <td>125</td> <td>Carla</td> </tr>
+        </tbody>
+    </table>
+    <script>
+        function adicionar( ev ) {
+            ev.preventDefault();
+
+            const codigo = document.getElementById( 'codigo' ).value;
+            const nome = document.getElementById( 'nome' ).value;
+
+            const tdCodigo = document.createElement( 'td' );
+            tdCodigo.innerText = codigo;
+
+            const tdNome = document.createElement( 'td' );
+            tdNome.innerText = nome;
+
+            const linha = document.createElement( 'tr' );
+            linha.append( tdCodigo, tdNome );
+            linha.addEventListener( 'click', trocarCor );
+
+            document.querySelector( 'tbody' ).append( linha );
+        }
+
+
+        function atualizar( ev ) {
+            ev.preventDefault();
+            const sel = document.querySelector( '.selecionado' );
+            if ( ! sel ) {
+                alert( 'Por favor, selecione um elemento.' );
+                return;
+            }
+
+            sel.firstElementChild.innerText = document.getElementById( 'codigo' ).value;
+            sel.lastElementChild.innerText = document.getElementById( 'nome' ).value;
+        }
+
+
+        function remover( ev ) {
+            ev.preventDefault();
+            const sel = document.querySelector( '.selecionado' );
+            if ( ! sel ) {
+                alert( 'Por favor, selecione um elemento.' );
+                return;
+            }
+            sel.remove();
+        }
+
+
+        document.getElementById( 'adicionar' )
+            .addEventListener( 'click', adicionar );
+
+        document.getElementById( 'atualizar' )
+            .addEventListener( 'click', atualizar );
+
+        document.getElementById( 'remover' )
+            .addEventListener( 'click', remover );
+
+
+        function trocarCor( ev ) {
+
+            // Remove a seleção de todos os elementos atuais
+            const selecionados = Array.from(
+                document.getElementsByClassName( 'selecionado' ) );
+            for ( const sel of selecionados ) {
+                sel.classList.remove( 'selecionado' );
+            }
+
+            // O elemento clicado é o td. O pai dele é a linha.
+            const linha = ev.target.parentElement;
+            linha.classList.toggle( 'selecionado' ); // Coloca/retira a classe CSS na linha
+            const codigo = linha.firstElementChild.innerText; // Obtém o texto do 1° td
+            const nome = linha.lastElementChild.innerText; // Obtém o texto do 2° td
+            desenharNoForm( codigo, nome );
+        }
+
+        function desenharNoForm( codigo, nome ) {
+            document.getElementById( 'codigo' ).value = codigo;
+            document.getElementById( 'nome' ).value = nome;
+        }
+
+        const linhas = document.querySelectorAll( 'tr' );
+        for ( const lin of linhas ) {
+            lin.addEventListener( 'click', trocarCor );
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //exer1
+        function concatenar(arr1, arr2){
+            return [...arr1, ...arr2];
+        }
+
+        console.log(concatenar([1,2,3,4], [5,6,7,8]));
+
+        //exer2
+        function concatenarIndefinidosArrays(...arr){
+            const arr2 = [];
+            for (const a of arr) {
+                arr2.push(...a);
+            }
+            return arr2;
+        }
+
+        console.log(concatenarIndefinidosArrays([1,2,3,4],[5,6,7,8],[9]));
+
+        // exer3
+        function imprimir([i1,,i3]){
+            console.log(i1,i3);
+        }
+        imprimir([1,2,3]);
+
+        // exer4
+        function imprimirApos2([, ,...args]){
+            console.log(args);
+        }
+        imprimirApos2([1,2,3,4,5])
+
+        // exer5
+        function imprimeEmail({email}){
+            console.log(email);
+        }
+        imprimeEmail({nome: 'João', email: '123@123'});
+
+        // exer6
+        function clonar(obj){
+            return {...obj};
+        }
+
+        console.log(clonar({nome: 'João', email: '123@123'}));
+
+        // exer7
+        function clonar2(obj1, obj2){
+            return {...obj1,...obj2};
+        }
+
+        console.log(clonar2({nome: 'João', email: '123@123'},{nome: 'BR', email: '456@qwert'}));
+
+        // exer8
+        function cloneSemElemento(arr, val){
+          const [first, ...rest] = arr;
+          if (val === first) {
+            return(rest);
+          }
+          return [first,...cloneSemElemento(rest,val)];
+        }
+
+        console.log(cloneSemElemento([1,2,3,4,5,6],4));
+    </script>
+</body>
+</html>

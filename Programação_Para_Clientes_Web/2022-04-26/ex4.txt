@@ -1,0 +1,6 @@
+Crie um arquivo index4.html que contenha um
+caixa de texto e um botão. Cada vez que o usuário
+clicar no botão, o conteúdo da caixa de texto
+deve ser acrescentado em um array. Por fim,
+os valores desse array devem ser impressos
+dentro de uma div.

@@ -1,0 +1,5 @@
+Crie um formulário contendo nome e idade.
+Quando um botão Imprimir for clicado,
+atribua seus valores para um objeto criado
+dinamicamente (propriedades "nome" e "idade")
+e então imprima o objeto.

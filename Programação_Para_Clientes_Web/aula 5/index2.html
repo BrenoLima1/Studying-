@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="a">A</button>
+    <button id="b">B</button>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Código</th>
+                <th>Descrição</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>00001</td>
+                <td>Suco de Uva</td>
+            </tr>
+            <tr>
+                <td>00002</td>
+                <td>Hamburguer</td>
+            </tr>
+            <tr>
+                <td>00003</td>
+                <td>Café</td>
+            </tr>
+            <tr>
+                <td>00004</td>
+                <td>Doce de Leite</td>
+            </tr>
+            <tr>
+                <td>00005</td>
+                <td>Água Mineral</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <script>
+        const informar = function (event) {
+            console.log(event.target.innerText, ' foi clicado');
+        }
+        document.getElementById('a').addEventListener('click', informar);
+        document.getElementById('b').addEventListener('click', informar);
+
+        const linhas = document.querySelectorAll('tr');
+        for (const linha of linhas) {
+            linha.addEventListener('click', informar);
+        }
+    </script>
+</body>
+
+</html>

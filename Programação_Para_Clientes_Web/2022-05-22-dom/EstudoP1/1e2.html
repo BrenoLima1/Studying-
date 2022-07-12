@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <select></select>
+    <button>Ver</button>
+    <div></div>
+    <br>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Código</th>
+        </tr>
+        <tbody>
+        </tbody>
+      </thead>
+    </table>
+    <script>
+      const cidades = [
+          {nome: "Nova Friburgo",
+          codigo: "NF"},
+         { nome: "Bom Jardim",
+          codigo: "BJ"},
+         { nome: "Cantagalo",
+          codigo: "CA"},
+         { nome: "Teresópolis",
+          codigo: "TP"},
+          {nome: "Duas Barras",
+          codigo: "DB"},
+        
+      ];
+
+      const select = document.querySelector("select");
+      const botao = document.querySelector("button");
+      const div = document.querySelector("div");
+
+      function preencher(codigo) {
+        for (const c of cidades) {
+          const option = document.createElement("option");
+          option.value = c.codigo;
+          option.innerText = c.nome;
+          select.appendChild(option);
+          if (codigo === c.codigo) {
+            option.selected = true;
+          }
+        }
+      }
+
+      preencher("DB");
+
+      const ver = () => {
+        div.innerText = select.querySelector(
+                'option[value="' + select.value + '"]' ).innerText;
+      };
+
+      botao.addEventListener("click", ver);
+
+      function preencherTabela(){
+        for (const c of cidades) {
+          const tdNome = document.createElement('td');
+          tdNome.innerText = c.nome;
+          
+          const tdCodigo = document.createElement('td');
+          tdCodigo.innerText = c.codigo;
+          
+          const linha = document.createElement('tr');
+          linha.append(tdNome,tdCodigo);
+
+          document.querySelector('tbody').append(linha);
+        }
+      }
+
+      preencherTabela();
+    </script>
+  </body>
+</html>

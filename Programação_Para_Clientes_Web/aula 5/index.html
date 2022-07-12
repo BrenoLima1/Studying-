@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="ok">OK</button>
+    <button id="colocar">Colocar</button>
+    <button id="retirar">Retirar</button>
+    <script>
+        const aoClicarEmOk = function(event){
+            // console.log(event);
+            console.log('`Clicou em: ' , event.target);
+        };
+        const botaoOk = document.getElementById('ok');
+        document.getElementById('colocar').addEventListener('click',function(){
+            botaoOk.addEventListener('click', aoClicarEmOk);
+        });
+        document.getElementById('retirar').addEventListener('click',function(){
+            botaoOk.removeEventListener('click', aoClicarEmOk);
+            console.log('Retirou clique');
+        });
+    </script>
+</body>
+</html>

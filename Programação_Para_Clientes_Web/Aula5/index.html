@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="src/tarefaError.js"></script>
+    <script src="src/tarefa.js"></script>
+    <form>
+      <label for="descricao">Descrição</label>
+      <input type="text" id="descricao" />
+      <label for="duracao">Duração em horas</label>
+      <input type="text" id="duracao" />
+      <button id="adicionar">Adicionar</button>
+    </form>
+
+    <table>
+      <thead>
+        <tr>
+          <td>Descrição</td>
+          <td>Duração</td>
+          <td>Ação</td>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <script>
+      const tarefas = [];
+      const tbody = document.querySelector('tbody');
+      const adicionar = (ev) => {
+        ev.preventDefault();
+      try{
+          const tarefa = new Tarefa(document.getElementById('descricao').value, document.getElementById('duracao').value);
+          tarefas.push(tarefa);
+
+          const linha = document.createElement('tr');
+          const descricao = document.createElement('td');
+          descricao.innerText = tarefa.descricao;
+          const duracao = document.createElement('td');
+          duracao.innerText = tarefa.duracaoEmHoras;
+          const remover = document.createElement('button');
+          remover.id = 'remover';
+          remover.innerText = 'Remover';
+          linha.append(descricao, duracao, remover);
+          
+          tbody.append(linha);
+      }catch (error){
+        throw new Error('Falha no processo');
+      }}
+
+      document.getElementById('adicionar').addEventListener('click', adicionar);
+      
+      function removerTarefa(ev){
+          const linha = ev.target.parentElement;
+          linha.remove();
+        }
+
+        for (const t of tbody.children) {
+            
+            document.getElementById('remover').addEventListener('click', removerTarefa);
+        }
+    </script>
+  </body>
+</html>

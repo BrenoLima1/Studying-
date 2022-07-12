@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .selecionado {
+        background-color: rgb(61, 167, 167);
+      }
+    </style>
+  </head>
+  <body>
+    <form>
+      <label for="nome">Nome</label>
+      <input type="text" id="nome" />
+      <label for="codigo">Código</label>
+      <input type="text" id="codigo" />
+      <button id="adicionar">Adicionar</button>
+      <button id="atualizar">Atualizar</button>
+      <button id="remover">Remover</button>
+      <label for="pesquisar">Pesquisar</label>
+      <input type="search" id="pesquisar" />
+    </form>
+    <br />
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Código</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script>
+      const cidades = [];
+      const adicionar = (ev) => {
+        ev.preventDefault();
+        const cidade = {
+          nome: document.getElementById("nome").value,
+          codigo: document.getElementById("codigo").value,
+        };
+
+        cidades.push(cidade);
+
+        document.querySelector("tbody").innerText = "";
+        for (const c of cidades) {
+          const tdNome = document.createElement("td");
+          tdNome.innerText = c.nome;
+
+          const tdCodigo = document.createElement("td");
+          tdCodigo.innerText = c.codigo;
+
+          const linha = document.createElement("tr");
+          linha.append(tdNome, tdCodigo);
+          linha.addEventListener("click", trocarCor);
+
+          document.querySelector("tbody").append(linha);
+        }
+        document.getElementById("nome").focus();
+      };
+
+      document.getElementById("adicionar").addEventListener("click", adicionar);
+
+      function atualizar(ev) {
+        ev.preventDefault();
+        const sel = document.querySelector(".selecionado");
+        if (!sel) {
+          alert("Selecione uma cidade.");
+          return;
+        }
+
+        for (const c of cidades) {
+          if (
+            sel.firstElementChild.innerText === c.nome &&
+            sel.lastElementChild.innerText === c.codigo
+          ) {
+            c.nome = document.getElementById("nome").value;
+            c.codigo = document.getElementById("codigo").value;
+            sel.firstElementChild.innerText = c.nome;
+            sel.lastElementChild.innerText = c.codigo;
+          }
+        }
+      }
+
+      document.getElementById("atualizar").addEventListener("click", atualizar);
+
+      function remover(ev) {
+        ev.preventDefault();
+        const sel = document.querySelector(".selecionado");
+        if (!sel) {
+          alert("Selecione uma cidade.");
+          return;
+        }
+
+        for (const c of cidades) {
+          if (
+            sel.firstElementChild.innerText === c.nome &&
+            sel.lastElementChild.innerText === c.codigo
+          ) {
+            cidades.splice(c);
+          }
+        }
+        sel.remove();
+      }
+
+      document.getElementById("remover").addEventListener("click", remover);
+
+      function trocarCor(ev) {
+        const linha = ev.target.parentElement;
+        linha.classList.toggle("selecionado");
+
+        const nome = linha.firstElementChild.innerText;
+
+        const codigo = linha.lastElementChild.innerText;
+
+        desenharNoForm(nome, codigo);
+      }
+
+      function desenharNoForm(nome, codigo) {
+        document.getElementById("nome").value = nome;
+        document.getElementById("codigo").value = codigo;
+      }
+    </script>
+  </body>
+</html>

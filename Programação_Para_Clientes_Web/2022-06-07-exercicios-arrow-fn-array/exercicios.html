@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script type="module" >
+        // Exercício 1
+        import { entreMinMax } from './01.js';
+        console.log( entreMinMax( [ 1, 2, 3, 4, 5, 6, 7, 8 ], 4, 6 ) );
+
+        // Exercício 2
+        function multiplicar( arr, valor ) {
+            return arr.map( e => e * valor );
+        }
+        console.log( multiplicar( [ 1, 2, 3, 4, 5 ], 3 ) );
+
+        // Exercício 3
+        // A
+        const contatos = [
+            { nome: 'Ana', sobrenome: 'Souza', tel: { ddd: '22', numero: '999887766' } },
+            { nome: 'Beto', sobrenome: 'Costa', tel: { ddd: '21', numero: '999776655' } },
+            { nome: 'Bia', sobrenome: 'Andrade', tel: { ddd: '21', numero: '988554433' } },
+            { nome: 'Carla', sobrenome: 'Silva', tel: { ddd: '24', numero: '998606060' } },
+            { nome: 'Carlos', sobrenome: 'Rocha', tel: { ddd: '22', numero: '988223344' } },
+        ];
+        const resultadoA = contatos.filter( e => e.tel.ddd === '22' );
+        console.log( resultadoA );
+
+        // B.1
+        const resultadoB = contatos.map( e =>
+            e.nome + ' ' + e.sobrenome + ' - (' + e.tel.ddd + ') ' + e.tel.numero );
+        console.log( resultadoB );
+
+        // B.2
+        const resultadoB2 = contatos.map( e =>
+            `${e.nome} ${e.sobrenome} - (${e.tel.ddd}) ${e.tel.numero}` );
+        console.log( resultadoB2 );
+
+        // C
+        const resultadoC = contatos.map( e => {
+            return {
+                nomeCompleto: e.sobrenome + ', ' + e.nome,
+                telefone: `(${e.tel.ddd}) ${e.tel.numero}`
+            };
+        } );
+        console.log( resultadoC );
+
+        // C2 (parênteses ao retornar objeto)
+        const resultadoC2 = contatos.map( e =>
+            ( {
+                nomeCompleto: `${e.sobrenome}, ${e.nome}`,
+                telefone: `(${e.tel.ddd}) ${e.tel.numero}`
+            } )
+        );
+        console.log( resultadoC2 );
+
+        // D
+        const resultadoD = resultadoC2.filter( e  =>
+            e.nomeCompleto.substr( 0, 1 ) === 'S' );
+        console.log( resultadoD );
+
+        // D2
+        const resultadoD2 = resultadoC2.filter( e  =>
+            e.nomeCompleto.startsWith( 'S' ) );
+        console.log( resultadoD2 );
+
+        // D3
+        const resultadoD3 = resultadoC2.filter( e  =>
+            e.nomeCompleto[ 0 ] == 'S' );
+        console.log( resultadoD3 );
+
+    </script>
+</body>
+</html>

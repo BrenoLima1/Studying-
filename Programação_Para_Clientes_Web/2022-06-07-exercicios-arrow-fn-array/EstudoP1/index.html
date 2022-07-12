@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!--
+        Exercício 4
+        Crie uma caixa de pesquisa que permita pesquisar um contato
+        por qualquer campo. Utilize o array de contatos do exercício
+        anterior. Exiba uma tabela HTML com somente os resultados
+        encontrados no array de contatos. Dispare a pesquisa com
+        um botão "Pesquisar".
+        Implemente o conteúdo JavaScript em arquivos de módulo.
+        Ex. index.js e contatos.js
+
+        Exercício 5
+        Faça com que seja possível ordenar as colunas ao clicar
+        em seus títulos. A ordenação deve ser invertida (de crescente
+        para decrescente, ou vice-versa) caso um novo clique seja
+        aplicado.
+    -->
+    <h2>Contatos</h2>
+    <form>
+      <label for="pesquisa">Pesquisa</label>
+      <input type="search" id="pesquisa" />
+      <button id="pesquisar">Pesquisar</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Sobrenome</th>
+          <th>DDD</th>
+          <th>Número</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <script src="./index.js" type="module"></script>
+  </body>
+</html>

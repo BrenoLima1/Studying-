@@ -1,0 +1,5 @@
+3) Crie uma função ordemInversa() que receba um
+array como argumento e o ordene em ordem decrescente.
+Faça um arquivo index3.html para isso.
+Forneça um array como argumento e imprima o
+array retornado.

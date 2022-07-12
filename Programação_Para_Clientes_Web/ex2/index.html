@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form method="POST" >
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" name="descricao" >
+        <label for="estoque">Estoque:</label>
+        <input type="text" id="estoque" name="estoque" >
+        <label for="preco">Preço:</label>
+        <input type="text" id="preco" name="preco" >
+        <button id="salvar" >Salvar</button>
+    </form>
+    <div id="mensagem" ></div>
+    <script src="produto.js" ></script>
+    <script>
+        function salvarProduto( produto ) {
+            console.log( produto );
+            document.getElementById( 'mensagem' ).innerText =
+                'Salvo ' + produto.toString();
+        }
+        document.getElementById( 'salvar' ).onclick = function( ev ) {
+            ev.preventDefault();
+            var p = new Produto(
+                document.getElementById( 'descricao' ).value,
+                Number( document.getElementById( 'estoque' ).value ),
+                Number( document.getElementById( 'preco' ).value )
+            );
+            salvarProduto( p );
+        };
+    </script>
+</body>
+</html>
